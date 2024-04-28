@@ -1,0 +1,252 @@
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>array+object</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <style>
+    table,
+    th,
+    td,
+    tr {
+      padding: 8px;
+
+      border: 1px solid black;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fafafaff;
+    }
+
+    th {
+      background-color: #f2f2f2ff;
+    }
+
+    input {
+      margin: 10px auto;
+    }
+
+    #message {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+
+
+
+    <!--table-->
+    <div style="display: flex;justify-content:center;">
+      <h1>Tasks Of Stuents</h1>
+    </div>
+    <div style="display: flex;justify-content: center;">
+
+      <table style="width:80%;margin-top: 40px;" id="students">
+        <tr>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>Age</th>
+          <th>City</th>
+          <th>Country</th>
+          <th>Options</th>
+        </tr>
+
+
+      </table>
+    </div>
+    <div style="display: flex; justify-content: center;margin-top: 50px;">
+      <button id="add" class="btn btn-primary" style="padding: 12px 20px; cursor: pointer;" data-toggle="modal"
+        data-target="#exampleModal">Add student</button>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add a new Student</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="form">
+              <input type="text" id="textinput1" name="fname" placeholder="firstName" class="form-control">
+              <div id="message"></div>
+              <input type="text" id="textinput2" name="fname" placeholder="lastName" class="form-control">
+
+              <input type="text" id="textinput3" name="fname" placeholder="Age" class="form-control">
+              <input type="text" id="textinput4" name="fname" placeholder="City" class="form-control">
+              <input type="text" id="textinput5" name="fname" placeholder="country" class="form-control">
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Add</button>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+
+
+
+  </main>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+  let form = document.getElementById('form');
+  let textinput1 = document.getElementById('textinput1');
+  let textinput2 = document.getElementById('textinput2');
+
+  let textinput3 = document.getElementById('textinput3');
+
+  let textinput4 = document.getElementById('textinput4');
+
+  let textinput5 = document.getElementById('textinput5');
+  let message = document.getElementById('message');
+
+
+  let students = [
+    {
+      firstName: 'Ahmad1',
+      lastName: 'Ali1',
+      age: '27',
+      city: 'Lattakia',
+      country: 'syria'
+    },
+
+    {
+      firstName: 'Ahmad2',
+      lastName: 'Ali2',
+      age: '22',
+      city: 'Homs',
+      country: 'syria'
+    },
+    {
+      firstName: 'Ahmad3',
+      lastName: 'Ali3',
+      age: '30',
+      city: 'Damascus',
+      country: 'syria'
+    },
+    {
+      firstName: 'Ahmad4',
+      lastName: 'Ali4',
+      age: '50',
+      city: 'Tartus',
+      country: 'syria'
+    }
+  ]
+
+  for (student of students) {
+    let result = `<tr> 
+                <td> ${student.firstName} </td> 
+                <td> ${student.lastName} </td> 
+                <td> ${student.age} </td> 
+                <td> ${student.city} </td> 
+                <td> ${student.country} </td> 
+                <td>
+            <div style="display: flex;justify-content: center; gap:20px;">
+              <i class="fa fa-edit" id="edit" style=" cursor: pointer" ></i>
+              <i class="fas fa-trash-alt" id="delete" style=" cursor: pointer" onclick="deletestudent(this)"></i>
+            </div>
+          </td>
+
+                 </tr>`
+    document.getElementById('students').innerHTML += result
+
+  }
+
+
+  document.getElementById('add').addEventListener("click", function () {
+
+
+
+  }
+
+  )
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formvalduation();
+  });
+
+  let formvalduation = () => {
+    if (textinput1.value === "" | textinput2.value === "" | textinput3.value === "" | textinput4.value === "" | textinput5.value === "") {
+      alert("Please,Enter the Empty field!");
+      textinput1.value = '';
+      textinput2.value = '';
+
+      textinput3.value = '';
+
+      textinput4.value = '';
+      textinput5.value = '';
+
+
+    }
+    else {
+
+      document.getElementById('students').innerHTML += `<tr> 
+                <td> ${textinput1.value} </td> 
+                <td> ${textinput2.value} </td> 
+                <td> ${textinput3.value} </td> 
+                <td> ${textinput4.value} </td> 
+                <td> ${textinput5.value} </td> 
+                <td>
+            <div style="display: flex;justify-content: center; gap:20px;">
+              <i class="fa fa-edit" id="edit" style=" cursor: pointer"></i>
+              <i onclick="deletestudent(this)" class="fas fa-trash-alt" id="deletestudent" style=" cursor: pointer" ></i>
+            </div>
+          </td>
+
+                 </tr>`
+      alert("Added successfully");
+
+      textinput1.value = '';
+      textinput2.value = '';
+
+      textinput3.value = '';
+
+      textinput4.value = '';
+      textinput5.value = '';
+
+
+    }
+  }
+
+
+  let  deletestudent = (e) => {
+    alert("delete") ;
+    students.splice(this,1) ;
+    
+}
+ //function deletestudent() {
+  //alert('this');
+ //}
+</script>
+
+</html>
